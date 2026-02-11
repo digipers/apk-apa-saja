@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cyber App Hub</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&display=swap');
+
+*{box-sizing:border-box}
+
+body{
+    margin:0;
+    font-family:Orbitron,sans-serif;
+    color:#e5f6ff;
+    background:
+        linear-gradient(180deg,#020617,#020617),
+        repeating-linear-gradient(90deg,
+            rgba(0,255,255,.05) 0,
+            rgba(0,255,255,.05) 1px,
+            transparent 1px,
+            transparent 40px
+        );
+    height:100vh;
+    overflow:hidden;
+}
+
+.scanline{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    background:repeating-linear-gradient(
+        180deg,
+        rgba(255,255,255,.03) 0,
+        rgba(255,255,255,.03) 1px,
+        transparent 1px,
+        transparent 4px
+    );
+    animation:flicker 3s infinite linear;
+}
+
+@keyframes flicker{
+    0%{opacity:.15}
+    50%{opacity:.25}
+    100%{opacity:.15}
+}
+
+.container{
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+}
+
+.logo{
+    width:90px;
+    margin-bottom:10px;
+    filter:
+        drop-shadow(0 0 12px #22d3ee)
+        drop-shadow(0 0 28px #22d3ee);
+    animation:pulse 2.5s infinite alternate;
+}
+
+@keyframes pulse{
+    from{transform:scale(1)}
+    to{transform:scale(1.06)}
+}
+
+h1{
+    font-size:34px;
+    letter-spacing:3px;
+    margin:10px 0 35px;
+    color:#67e8f9;
+    text-shadow:0 0 18px #22d3ee;
+}
+
+.grid{
+    width:100%;
+    max-width:1000px;
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:18px;
+}
+
+.card{
+    padding:22px 10px;
+    border-radius:16px;
+    background:rgba(8,20,40,.92);
+    border:2px solid rgba(34,211,238,.35);
+    cursor:pointer;
+    transition:.3s;
+    text-align:center;
+}
+
+.card:hover{
+    transform:translateY(-6px) scale(1.03);
+    box-shadow:0 0 22px #22d3ee,0 0 50px rgba(34,211,238,.5);
+}
+
+.icon{
+    font-size:38px;
+    margin-bottom:8px;
+    filter:drop-shadow(0 0 10px #22d3ee);
+}
+
+.title{
+    font-size:14px;
+    letter-spacing:1px;
+}
+
+.logout{
+    border-color:#fb7185;
+}
+
+.logout:hover{
+    box-shadow:0 0 25px #fb7185,0 0 55px rgba(251,113,133,.6);
+}
+
+/* responsive */
+@media(max-width:900px){
+    .grid{grid-template-columns:repeat(3,1fr);}
+}
+@media(max-width:500px){
+    .grid{grid-template-columns:repeat(2,1fr);}
+}
+</style>
+</head>
+
+<body>
+
+<div class="scanline"></div>
+
+<div class="container">
+
+<img src="logo.png" class="logo">
+
+<h1>MANAGEMEN DIGITAL MADRASAH</h1>
+
+<div class="grid">
+
+<div class="card" onclick="go('https://digipers.github.io/kaldik/')">
+<div class="icon">📄</div>
+<div class="title">Kaldik</div>
+</div>
+
+<div class="card" onclick="go('https://digipers.github.io/surat-sekolah/')">
+<div class="icon">💳</div>
+<div class="title">Surat Sekolah</div>
+</div>
+
+<div class="card" onclick="go('https://digipers.github.io/bendahara/')">
+<div class="icon">🕒</div>
+<div class="title">Keuangan</div>
+</div>
+
+<div class="card" onclick="go('https://digipers.github.io/jadwal-pekaes/')">
+<div class="icon">📦</div>
+<div class="title">Jadwal PKM</div>
+</div>
+
+<div class="card" onclick="go('https://digipers.github.io/kartu-ulangan/')">
+<div class="icon">📦</div>
+<div class="title">Kartu Ujian</div>
+</div>
+
+<div class="card logout" onclick="logout()">
+<div class="icon">🚪</div>
+<div class="title">LOGOUT</div>
+</div>
+
+</div>
+</div>
+
+<script>
+function go(link){
+    window.open(link,'_blank')
+}
+function logout(){
+    if(confirm("Logout sekarang?")){
+        location.href="login.html"
+    }
+}
+</script>
+
+</body>
+</html>
